@@ -1326,6 +1326,12 @@ class XPlaneManipulator:
                 )
             elif self.type == MANIP_NOOP:
                 value = ()
+            elif self.type == MANIP_DEVICE:
+                value = (
+                    self.manip.cursor,
+                    self.manip.device,
+                    self.manip.tooltip,
+                )
             else:
                 msg = "Manipulator type %s is unknown or unimplemented" % self.type
                 logger.error(msg)

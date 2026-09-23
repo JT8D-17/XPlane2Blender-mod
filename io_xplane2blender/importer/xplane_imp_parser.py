@@ -382,7 +382,11 @@ def import_obj(filepath: Union[pathlib.Path, str]) -> str:
                               vec_x_to_b(list(map(float, components[4:7]))),
                               *components[7:16],
                               ' '.join(components[16:]))
-
+        elif directive == "ATTR_manip_device":
+            cursor = components[0]
+            device = components[1]
+            tooltip = ' '.join(components[2:])
+            builder.build_cmd(directive, cursor, device, tooltip)
         # =====================
         # MANIPULATOR MODIFIERS
         # =====================

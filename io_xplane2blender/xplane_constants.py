@@ -169,6 +169,7 @@ MANIPULATORS_MOUSE_WHEEL = (
 
 MANIPULATORS_OPT_IN = MANIP_DRAG_AXIS
 
+MANIP_DEVICE = "device"
 
 def _get_all_manipulators():
     import inspect

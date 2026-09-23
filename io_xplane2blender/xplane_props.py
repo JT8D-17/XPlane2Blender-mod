@@ -697,7 +697,8 @@ class XPlaneManipulatorSettings(bpy.types.PropertyGroup):
             (MANIP_COMMAND_SWITCH_LEFT_RIGHT, "Command Switch Left Right (v10.50)", "Command Switch Left Right (requires at least v10.50)"),
             (MANIP_AXIS_SWITCH_UP_DOWN,       "Axis Switch Up Down (v10.50)",       "Axis Switch Up Down (requires at least v10.50)"),
             (MANIP_AXIS_SWITCH_LEFT_RIGHT,    "Axis Switch Left Right (v10.50)",    "Axis Switch Left Right (requires at least v10.50)"),
-            (MANIP_AXIS_KNOB, "Axis Knob (v10.50)", "Axis Knob (requires at least v10.50)")
+            (MANIP_AXIS_KNOB, "Axis Knob (v10.50)", "Axis Knob (requires at least v10.50)"),
+            (MANIP_DEVICE, "Cockpit Device", "Plugin Cockpit Device")
         ]
 
         type_v1110_items = [
@@ -915,6 +916,12 @@ class XPlaneManipulatorSettings(bpy.types.PropertyGroup):
         description = "Power of an exponential curve that controls the speed at which the dataref changes. Higher numbers cause a more “non-linear” response, where small drags are very precise and large drags are very fast",
         default = 1.0,
         precision = 3
+    )
+
+    device: bpy.props.StringProperty(
+        name = "Device",
+        description = "The plugin cockpit device to reference",
+        default = ""
     )
 
     def get_effective_type_desc(self) -> str:

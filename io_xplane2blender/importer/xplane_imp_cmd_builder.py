@@ -73,7 +73,8 @@ from io_xplane2blender.xplane_constants import (
     COCKPIT_FEATURE_DEVICE,
     LIGHT_PARAM,
     LIGHT_AUTOMATIC,
-    MANIP_CURSOR_HAND
+    MANIP_CURSOR_HAND,
+    MANIP_DEVICE
 )
 from io_xplane2blender.xplane_helpers import (
     ExportableRoot,
@@ -1131,6 +1132,9 @@ class ImpCommandBuilder:
                                                   dataref1=args[10],
                                                   dataref2=args[11],
                                                   tooltip=args[12])
+        #elif directive == "ATTR_manip_device":
+        #    self.current_manipulator = Attr_manip(type=MANIP_DEVICE, cursor=args[0], device=args[1], tooltip=args[2])
+
             logger.warn(F"Manipulator {directive} is not yet fully handled - check your model!")
 
         # =====================

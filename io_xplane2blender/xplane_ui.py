@@ -1798,7 +1798,7 @@ def manipulator_layout(layout: bpy.types.UILayout, obj: bpy.types.Object) -> Non
         # fmt: off
         props =  collections.OrderedDict() # type: Dict[str,Tuple[Callable[[str],bool],Optional[Callable[[str],bool]]]]
         props['autodetect_datarefs'] = (lambda manip_type: should_show_autodetect_dataref(manip_type), None)
-        props['dataref1'] = (lambda manip_type: manip_type in MANIPULATORS_ALL - MANIPULATORS_COMMAND - {MANIP_NOOP} and\
+        props['dataref1'] = (lambda manip_type: manip_type in MANIPULATORS_ALL - MANIPULATORS_COMMAND - {MANIP_NOOP,MANIP_DEVICE} and\
                 should_show_dataref(manip_type), lambda manip_type: get_dataref_title(manip_type,1))
         props['dataref2'] =\
             lambda manip_type: manip_type in {MANIP_DRAG_XY} | {MANIP_DRAG_AXIS_DETENT, MANIP_DRAG_ROTATE_DETENT} and should_show_dataref(manip_type),\
@@ -1833,6 +1833,8 @@ def manipulator_layout(layout: bpy.types.UILayout, obj: bpy.types.Object) -> Non
         props['click_step']  = (lambda manip_type: manip_type in {MANIP_AXIS_KNOB, MANIP_AXIS_SWITCH_UP_DOWN, MANIP_AXIS_SWITCH_LEFT_RIGHT}, None)
         props['hold_step']   = (lambda manip_type: manip_type in {MANIP_AXIS_KNOB, MANIP_AXIS_SWITCH_UP_DOWN, MANIP_AXIS_SWITCH_LEFT_RIGHT}, None)
         props['wheel_delta'] = (lambda manip_type: manip_type in MANIPULATORS_MOUSE_WHEEL and xplane_version >= 1050, None)
+
+        props['device'] = (lambda manip_type: manip_type in MANIP_DEVICE, None)
         # fmt: on
 
         if manipType in MANIPULATORS_OPT_IN and xplane_version >= 1110:
